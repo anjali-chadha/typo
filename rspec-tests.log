@@ -1,0 +1,48 @@
+ec2-user:~/environment/typo (master) $ rspec
+/usr/local/rvm/gems/ruby-1.9.3-p551/gems/activesupport-3.0.17/lib/active_support/dependencies.rb:242:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+..............Not validating feed because no validator (feedvalidator in python) is installed
+.................Not validating feed because no validator (feedvalidator in python) is installed
+..Not validating feed because no validator (feedvalidator in python) is installed
+........................................................................................Not validating feed because no validator (feedvalidator in python) is installed
+....Not validating feed because no validator (feedvalidator in python) is installed
+...Not validating feed because no validator (feedvalidator in python) is installed
+..........................................Not validating feed because no validator (feedvalidator in python) is installed
+..Not validating feed because no validator (feedvalidator in python) is installed
+...................................................................................................Not validating feed because no validator (feedvalidator in python) is installed
+...Not validating feed because no validator (feedvalidator in python) is installed
+....Not validating feed because no validator (feedvalidator in python) is installed
+..Not validating feed because no validator (feedvalidator in python) is installed
+...............................................................................................................................................................................................................................................................................................................................................*..............................*....................................................................................................................*.*.*................................................................................................................................*..............................................................................................................................................................................................*................................................*..*..........................................................................................
+
+Pending:
+  Article test_triggers_are_dependent
+    # Needs a fix for Rails ticket #5105: has_many: Dependent deleting does not work with STI
+    # ./spec/models/article_spec.rb:286
+  Article with tags lets the tag collection survive a load-save cycle
+    # Not yet implemented
+    # ./spec/models/article_spec.rb:241
+  CategoriesController /index if :index template exists should render :index
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/categories_controller_spec.rb:30
+  CategoriesController#show should render :show by default
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/categories_controller_spec.rb:62
+  CategoriesController#show should render personal when template exists
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/categories_controller_spec.rb:77
+  ThemeController disabled_test_javascript
+    # Not yet implemented
+    # ./spec/controllers/theme_controller_spec.rb:35
+  Admin::PagesController should create a page published in the future without a redirect
+    # :published_at parameter is currently ignored
+    # ./spec/controllers/admin/pages_controller_spec.rb:120
+  TagsController /index if :index template exists should render :index
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/tags_controller_spec.rb:23
+  TagsController showing a single tag with some articles should render :show by default
+    # Stubbing #template_exists is not enough to fool Rails
+    # ./spec/controllers/tags_controller_spec.rb:60
+
+Finished in 1 minute 11.27 seconds
+1230 examples, 0 failures, 9 pending
+Coverage report generated for RSpec to /home/ec2-user/environment/typo/coverage. 13412 / 15011 LOC (89.35%) covered.

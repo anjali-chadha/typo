@@ -1,0 +1,62 @@
+ec2-user:~/environment/typo (master) $ cucumber
+Using the default profile...
+/usr/local/rvm/gems/ruby-1.9.3-p551/gems/activesupport-3.0.17/lib/active_support/dependencies.rb:242:in `block in require': iconv will be deprecated in the future, use String#encode instead.
+Feature: Manage Categories
+  As an admin
+  I want to categorise my blogs of various topics
+  I want to be able to create new categories and edit older ones
+
+  Background:                            # features/blog_categories.feature:6
+    Given the blog is set up             # features/step_definitions/web_steps.rb:34
+    And I am logged into the admin panel # features/step_definitions/web_steps.rb:46
+    And I follow "Categories"            # features/step_definitions/web_steps.rb:80
+
+  Scenario: Create a new category                                  # features/blog_categories.feature:11
+    Given I am on the categories page                              # features/step_definitions/web_steps.rb:68
+    When I fill in "category_name" with "shapes"                   # features/step_definitions/web_steps.rb:84
+    And I fill in "category_keywords" with "circle"                # features/step_definitions/web_steps.rb:84
+    And I fill in "category_description" with "Is Circle a Shape?" # features/step_definitions/web_steps.rb:84
+    And I press "Save"                                             # features/step_definitions/web_steps.rb:76
+    Then I should see "shapes"                                     # features/step_definitions/web_steps.rb:129
+    Then I should see "circle"                                     # features/step_definitions/web_steps.rb:129
+    Then I should see "Is Circle a Shape?"                         # features/step_definitions/web_steps.rb:129
+
+Feature: Create Blog
+  As an author
+  In order to gift my thoughts to the world
+  I want to create a blog
+
+  Scenario: Create blog page shown      # features/create_blog.feature:6
+    Given I am on the home page         # features/step_definitions/web_steps.rb:68
+    Then I should see "Welcome"         # features/step_definitions/web_steps.rb:129
+    And I should see "My Shiny Weblog!" # features/step_definitions/web_steps.rb:129
+
+  Scenario: Create blog page not shown when blog created # features/create_blog.feature:11
+    Given the blog is set up                             # features/step_definitions/web_steps.rb:34
+    When I am on the home page                           # features/step_definitions/web_steps.rb:68
+    Then I should not see "My Shiny Weblog!"             # features/step_definitions/web_steps.rb:147
+    And I should see "Teh Blag"                          # features/step_definitions/web_steps.rb:129
+
+Feature: Write Articles
+  As a blog administrator
+  In order to share my thoughts with the world
+  I want to be able to add articles to my blog
+
+  Background:                            # features/write_article.feature:6
+    Given the blog is set up             # features/step_definitions/web_steps.rb:34
+    And I am logged into the admin panel # features/step_definitions/web_steps.rb:46
+
+  Scenario: Successfully write articles                                  # features/write_article.feature:10
+    Given I am on the new article page                                   # features/step_definitions/web_steps.rb:68
+    When I fill in "article_title" with "Foobar"                         # features/step_definitions/web_steps.rb:84
+    And I fill in "article__body_and_extended_editor" with "Lorem Ipsum" # features/step_definitions/web_steps.rb:84
+    And I press "Publish"                                                # features/step_definitions/web_steps.rb:76
+    Then I should be on the admin content page                           # features/step_definitions/web_steps.rb:254
+    When I go to the home page                                           # features/step_definitions/web_steps.rb:72
+    Then I should see "Foobar"                                           # features/step_definitions/web_steps.rb:129
+    When I follow "Foobar"                                               # features/step_definitions/web_steps.rb:80
+    Then I should see "Lorem Ipsum"                                      # features/step_definitions/web_steps.rb:129
+
+4 scenarios (4 passed)
+29 steps (29 passed)
+0m3.602s
